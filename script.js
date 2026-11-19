@@ -29,5 +29,5 @@ function sendOrder(){
 
   var text = "Сәлеметсіз бе! KANAT ALYKAS сайтынан жазып отырмын%0A%0AАты: " + name + "%0AТелефон: " + phone + "%0AМодель: " + model + "%0AӨлшем: " + size;
   // ОСЫ ЖЕРДЕГІ НӨМІРДІ ӨЗІҢДІКІНЕ АУЫСТЫР
-  window.open("https://wa.me/77000000000?text=" + text, "_blank");
+  window.open("https://wa.me/77086246496?text=" + text, "_blank");
 }
