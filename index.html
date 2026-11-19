@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KANAT ALYKAS — Қолдан тігілген былғары</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- МЕНЮ -->
+<header id="header">
+  <div class="logo">KANAT <span>ALYKAS</span></div>
+  <nav>
+    <a href="#home">Басты</a>
+    <a href="#works">Жұмыстар</a>
+    <a href="#about">Шеберхана</a>
+    <a href="#order">Заказ</a>
+  </nav>
+  <a class="wa-btn" href="https://wa.me/77000000000">WhatsApp</a>
+</header>
+
+<!-- 1. БАС БЕТ - СЕНІҢ ВИДЕОҢ ФОНДА -->
+<section id="home" class="hero">
+  <!-- ОСЫ ЖЕРДЕ СЕНІҢ ВИДЕОҢ ТҰРАДЫ -->
+  <video autoplay muted loop playsinline class="hero-video">
+    <source src="bg.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <p class="hero-tag">🇰🇿 ҚАЗАҚСТАНДЫҚ ШЕБЕРХАНА • 2021 ЖЫЛДАН</p>
+    <h1>ҚОЛДАН ТІГІЛГЕН<br><span>ТАЗА БЫЛҒАРЫ</span><br>АЯҚКИІМ</h1>
+    <p class="hero-sub">Машина емес. Қол. Тер. Шебердің қолымен тігіледі.<br>Сенің аяғыңа дәл өлшеп тігеміз.</p>
+    <div class="hero-buttons">
+      <a href="#works" class="btn-gold">Жұмыстарды көру ↓</a>
+      <a href="#order" class="btn-white">Заказ беру →</a>
+    </div>
+    <div class="hero-stats">
+      <div><b>100%</b><span>Таза былғары</span></div>
+      <div><b>100+</b><span>Тігілген жұп</span></div>
+      <div><b>5 жыл</b><span>Тәжірибе</span></div>
+    </div>
+  </div>
+  <div class="scroll">Төмен қарай ↓</div>
+</section>
+
+<!-- ЖҮГІРІП ТҰРАТЫН ЖОЛАҚ -->
+<div class="marquee"><span>ТАЗА БЫЛҒАРЫ • ҚОЛДАН ТІГІЛГЕН • ЕРЕКШЕ ДИЗАЙН • ҚАЗАҚСТАН БОЙЫНША ЖЕТКІЗУ • ТАПCЫРЫС БОЙЫНША •&nbsp;</span><span>ТАЗА БЫЛҒАРЫ • ҚОЛДАН ТІГІЛГЕН • ЕРЕКШЕ ДИЗАЙН • ҚАЗАҚСТАН БОЙЫНША ЖЕТКІЗУ • ТАПCЫРЫС БОЙЫНША •&nbsp;</span></div>
+
+<!-- 2. ЖҰМЫСТАР - СЕНІҢ ФОТОЛАРЫҢ -->
+<section id="works" class="section">
+  <h2>МЕНІҢ ЖҰМЫСТАРЫМ</h2>
+  <p class="section-sub">Бәрі менің қолымнан шыққан. Суретті бас - үлкейеді.</p>
+  <div class="gallery">
+    <div class="g-card" onclick="openModal('photo1.jpg')">
+      <img src="photo1.jpg" alt="Жұмыс 1">
+      <div class="g-info"><h3>Көктемгі кроссовка</h3><p>Ақ / Қара • Таза былғары</p><span>Толық көру →</span></div>
+    </div>
+    <div class="g-card" onclick="openModal('photo2.jpg')">
+      <img src="photo2.jpg" alt="Жұмыс 2">
+      <div class="g-info"><h3>Қара былғары етік</h3><p>Шнуровка • Қыс / Күз</p><span>Толық көру →</span></div>
+    </div>
+    <div class="g-card" onclick="openModal('photo3.jpg')">
+      <img src="photo3.jpg" alt="Жұмыс 3">
+      <div class="g-info"><h3>Классикалық ботинка</h3><p>Етіктерге • Тойға / Жұмысқа</p><span>Толық көру →</span></div>
+    </div>
+  </div>
+  <p class="hint">* photo1.jpg, photo2.jpg, photo3.jpg деген файлдарды өзіңнің фотоңа ауыстырсаң болды</p>
+</section>
+
+<!-- 3. ШЕБЕРХАНА ТУРАЛЫ -->
+<section id="about" class="about">
+  <div class="about-text">
+    <h2>МЕН КІММІН?</h2>
+    <p>Менің атым Қанат. Мен етікшімін.<br><br>Мен зауыттың аяқкиімін сатпаймын. Мен өз қолыммен, таза былғарыдан, бір-бірлеп тігемін. Әр жұп - 2-3 күн жұмыс. Әр тігіс - қолмен.<br><br>Сондықтан менің аяқкиімім магазиндегідей емес - ол ұзақ жүреді, аяққа дәл отырады.</p>
+    <a href="https://instagram.com/kanatalykas" class="insta">Instagram: @kanatalykas →</a>
+  </div>
+  <div class="about-video">
+    <!-- ОСЫ ЖЕРГЕ ДЕ СЕНІҢ ВИДЕОҢДЫ ҚОЮҒА БОЛАДЫ -->
+    <video autoplay muted loop playsinline src="bg.mp4"></video>
+    <div class="about-badge">ҚОЛДАН<br>ТІГІЛГЕН</div>
+  </div>
+</section>
+
+<!-- 4. ЗАКАЗ ФОРМАСЫ -->
+<section id="order" class="section">
+  <div class="order-box">
+    <h2>ЗАКАЗ БЕРУ</h2>
+    <p>Форма толтыр - WhatsApp-қа өзі кетеді</p>
+    <input id="f-name" type="text" placeholder="Атыңыз">
+    <input id="f-phone" type="tel" placeholder="Телефон +7 ...">
+    <select id="f-model">
+      <option>Көктемгі кроссовка</option>
+      <option>Қара былғары етік</option>
+      <option>Классикалық ботинка</option>
+      <option>Өз дизайныммен тіктіргім келеді</option>
+    </select>
+    <input id="f-size" type="text" placeholder="Өлшем (мысалы: 42, 27 см)">
+    <button onclick="sendOrder()">WhatsApp-қа жіберу →</button>
+  </div>
+</section>
+
+<footer>
+  <b>KANAT ALYKAS</b><br>Қолдан тігілген былғары аяқкиім • Алматы, Қазақстан<br>
+  Instagram @kanatalykas • TikTok @kanat_etikshi
+</footer>
+
+<!-- ҮЛКЕН ФОТО АШЫЛАТЫН ТЕРЕЗЕ -->
+<div id="modal" onclick="closeModal()">
+  <span>✕ Жабу</span>
+  <img id="modal-img" src="">
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
