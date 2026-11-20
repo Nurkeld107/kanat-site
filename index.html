@@ -27,9 +27,9 @@
     <source src="bg.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
-  <span class="float-shoe" style="top:20%; left:8%; z-index:5;">👞</span>
-<span class="float-shoe" style="top:60%; right:8%; animation-delay:1.5s; z-index:5;">🥾</span>
-
+<div class="orb" style="width:300px;height:300px;top:-50px;left:-50px;"></div>
+<div class="orb" style="width:200px;height:200px;bottom:10%;right:5%;"></div>
+<div class="orb" style="width:120px;height:120px;top:40%;left:45%;"></div>
   <div class="hero-content">
     <p class="hero-tag">🇰🇿 ҚАЗАҚСТАНДЫҚ ШЕБЕРХАНА • 2025 ЖЫЛДАН</p>
     <h1>ҚОЛДАН ТІГІЛГЕН<br><span>ТАЗА БЫЛҒАРЫ</span><br>АЯҚКИІМ</h1>
@@ -180,29 +180,20 @@
   border:none;
   cursor:pointer;
 }
-  /* АНИМАЦИЯ */
-@keyframes bgMove{
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
-}
-@keyframes floatUp{
-  0%{transform:translateY(0)}
-  50%{transform:translateY(-18px)}
-  100%{transform:translateY(0)}
-}
-.hero{
-  background: linear-gradient(120deg, #000, #1a1200, #000, #2b1a00);
-  background-size: 300% 300%;
-  animation: bgMove 10s ease infinite;
-  position:relative;
-  overflow:hidden;
-}
-.float-shoe{
+/* МОЩНЫЙ PARALLAX */
+.orb{
   position:absolute;
-  font-size:70px;
-  opacity:0.25;
-  animation: floatUp 4s ease-in-out infinite;
+  border-radius:50%;
+  background: radial-gradient(circle, rgba(255,170,0,0.35), transparent 70%);
+  filter: blur(20px);
+  pointer-events:none;
+  z-index:1;
+  transition: transform 0.3s ease-out;
+}
+.hero-content{
+  position:relative;
+  z-index:3;
+  transition: transform 0.3s ease-out;
 }
 </style>
 <div class="wa-menu" id="waMenu">
@@ -236,6 +227,37 @@ function sendOrder(){
   let text = `Сәлем! Тапсырыс:%0AМодель: ${model}%0AӨлшем: ${size}%0AСаны: ${count} жұп%0AАлу: ${delivery}%0AАты: ${name}%0AТел: ${phone}`;
   window.open(`https://wa.me/77086246496?text=${text}`, "_blank");
 }
+</script>
+  <script>
+function moveParallax(x, y){
+  document.querySelectorAll('.orb').forEach((orb, i) => {
+    orb.style.transform = `translate(${x * (20 + i*15)}px, ${y * (20 + i*15)}px)`;
+  });
+  let content = document.querySelector('.hero-content');
+  if(content) content.style.transform = `translate(${x * -10}px, ${y * -10}px)`;
+}
+// 1. Компьютер - мышка
+document.addEventListener('mousemove', e => {
+  let x = (e.clientX / window.innerWidth - 0.5);
+  let y = (e.clientY / window.innerHeight - 0.5);
+  moveParallax(x, y);
+});
+// 2. Телефон - саусақпен жылжыту
+document.addEventListener('touchmove', e => {
+  let t = e.touches[0];
+  let x = (t.clientX / window.innerWidth - 0.5);
+  let y = (t.clientY / window.innerHeight - 0.5);
+  moveParallax(x, y);
+});
+// 3. Телефон - еңкейту (гироскоп)
+window.addEventListener('deviceorientation', e => {
+  if(e.gamma === null) return;
+  let x = e.gamma / 30;
+  let y = e.beta / 30;
+  if(x > 0.5) x = 0.5; if(x < -0.5) x = -0.5;
+  if(y > 0.5) y = 0.5; if(y < -0.5) y = -0.5;
+  moveParallax(x, y);
+});
 </script>
 </body>
 </html>
