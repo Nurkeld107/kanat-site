@@ -83,10 +83,10 @@
   </div>
 </section>
 
-<!-- 4. ЗАКАЗ ФОРМАСЫ -->
+<!-- 4. ТАПСЫРЫС ФОРМАСЫ -->
 <section id="order" class="section">
   <div class="form-box">
-    <h2>ЗАКАЗ БЕРУ</h2>
+    <h2>ТАПСЫРЫС БЕРУ</h2>
     <p>Форма толтыр - WhatsApp-қа өзі кетеді</p>
     <input id="f-name" type="text" placeholder="Атыңыз">
     <input id="f-phone" type="tel" placeholder="Телефон +7 ...">
@@ -94,10 +94,15 @@
       <option>Көктемгі кроссовка</option>
       <option>Қара былғары етік</option>
       <option>Классикалық ботинка</option>
-      <option>Өз дизайныммен тіктіргім келеді</option>
+      <option>Өз дизайнмен тіктірім келеді</option>
     </select>
     <input id="f-size" type="text" placeholder="Өлшем (мысалы: 42, 27 см)">
-    <button onclick="sendOrder()">WhatsApp-қа жіберу →</button>
+    <input id="f-count" type="number" placeholder="Саны (мысалы: 1)" value="1" min="1">
+    <select id="f-delivery">
+      <option>Дүкеннен аламын</option>
+      <option>Доставка керек</option>
+    </select>
+    <button onclick="sendOrder()">Тапсырысты жіберу →</button>
   </div>
 </section>
 
@@ -194,5 +199,17 @@ window.addEventListener('load', function(){ setTimeout(function(){ window.scroll
   <p style="color:#666; margin:0 0 20px;">Күнде 10:00 - 20:00</p>
   <a href="https://2gis.kz/almaty/geo/70030077190456827/77.160499,43.313783" target="_blank" style="display:inline-block; background:#00b341; color:#fff; padding:13px 26px; border-radius:30px; font-weight:700; text-decoration:none;">2ГИС-те жолды қарау 🗺️</a>
    </div>
+  <script>
+function sendOrder(){
+  let name = document.getElementById("f-name").value;
+  let phone = document.getElementById("f-phone").value;
+  let model = document.getElementById("f-model").value;
+  let size = document.getElementById("f-size").value;
+  let count = document.getElementById("f-count").value;
+  let delivery = document.getElementById("f-delivery").value;
+  let text = `Сәлем! Тапсырыс:%0AМодель: ${model}%0AӨлшем: ${size}%0AСаны: ${count} жұп%0AАлу: ${delivery}%0AАты: ${name}%0AТел: ${phone}`;
+  window.open(`https://wa.me/77086246496?text=${text}`, "_blank");
+}
+</script>
 </body>
 </html>
