@@ -27,6 +27,8 @@
     <source src="bg.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
+  <span class="float-shoe" style="top:20%; left:8%; z-index:5;">👞</span>
+<span class="float-shoe" style="top:60%; right:8%; animation-delay:1.5s; z-index:5;">🥾</span>
 
   <div class="hero-content">
     <p class="hero-tag">🇰🇿 ҚАЗАҚСТАНДЫҚ ШЕБЕРХАНА • 2025 ЖЫЛДАН</p>
@@ -177,6 +179,30 @@
   font-weight:700;
   border:none;
   cursor:pointer;
+}
+  /* АНИМАЦИЯ */
+@keyframes bgMove{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+@keyframes floatUp{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-18px)}
+  100%{transform:translateY(0)}
+}
+.hero{
+  background: linear-gradient(120deg, #000, #1a1200, #000, #2b1a00);
+  background-size: 300% 300%;
+  animation: bgMove 10s ease infinite;
+  position:relative;
+  overflow:hidden;
+}
+.float-shoe{
+  position:absolute;
+  font-size:70px;
+  opacity:0.25;
+  animation: floatUp 4s ease-in-out infinite;
 }
 </style>
 <div class="wa-menu" id="waMenu">
