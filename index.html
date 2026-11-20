@@ -194,5 +194,63 @@ window.addEventListener('load', function(){ setTimeout(function(){ window.scroll
   <p style="color:#666; margin:0 0 20px;">Күнде 10:00 - 20:00</p>
   <a href="https://2gis.kz/almaty/geo/70030077190456827/77.160499,43.313783" target="_blank" style="display:inline-block; background:#00b341; color:#fff; padding:13px 26px; border-radius:30px; font-weight:700; text-decoration:none;">2ГИС-те жолды қарау 🗺️</a>
    </div>
+  <!-- ТАПСЫРЫС БӨЛІМІ -->
+<section id="zakaz" style="padding: 40px 20px; background: #2b1a12; color: white; text-align: center;">
+  <h2 style="color: #ffb340; font-size: 28px;">ТАПСЫРЫС БЕРУ</h2>
+  <p>Таңда, санына бас, төменде атыңды жаз</p>
+
+  <div id="tovarlar" style="max-width: 500px; margin: 20px auto; text-align: left;"></div>
+
+  <h3>Барлығы: <span id="jalpy">0</span> ₸</h3>
+
+  <input id="aty" placeholder="Аты-жөніңіз" style="width: 90%; max-width: 500px; padding: 12px; margin: 8px 0; border-radius: 10px; border: none;">
+  <br>
+  <input id="tel" placeholder="Телефон +7" style="width: 90%; max-width: 500px; padding: 12px; margin: 8px 0; border-radius: 10px; border: none;">
+  <br>
+  <select id="alu" style="width: 90%; max-width: 500px; padding: 12px; margin: 8px 0; border-radius: 10px;">
+    <option>Дүкеннен аламын</option>
+    <option>Доставка керек</option>
+  </select>
+  <br><br>
+  <button onclick="jiberu()" style="background: #ffb340; color: black; border: none; padding: 15px 30px; border-radius: 12px; font-size: 18px; font-weight: bold;">Тапсырыс беру</button>
+</section>
+
+<script>
+let tovar = [
+  {aty: "Туфли", baga: 0, san: 0},
+  {aty: "Ботики", baga: 0, san: 0},
+  {aty: "Кроссовки", baga: 0, san: 0},
+  {aty: "Балалар ботасы", baga: 0, san: 0},
+];
+function korset(){
+  let html = "";
+  tovar.forEach((t, i)=>{
+    html += `<div style="display:flex; justify-content:space-between; align-items:center; padding: 12px 0; border-bottom: 1px solid #555;">
+      <div><b>${t.aty}</b><br><small>${t.baga} ₸</small></div>
+      <div>
+        <button onclick="azait(${i})" style="padding:5px 12px; border-radius:8px;">-</button>
+        <span style="margin:0 10px;">${t.san}</span>
+        <button onclick="kobeit(${i})" style="padding:5px 12px; border-radius:8px;">+</button>
+      </div>
+    </div>`;
+  });
+  document.getElementById("tovarlar").innerHTML = html;
+  let sum = 0;
+  tovar.forEach(t=> sum += t.baga * t.san);
+  document.getElementById("jalpy").innerText = sum;
+}
+function kobeit(i){ tovar[i].san++; korset(); }
+function azait(i){ if(tovar[i].san>0) tovar[i].san--; korset(); }
+function jiberu(){
+  let aty = document.getElementById("aty").value;
+  let tel = document.getElementById("tel").value;
+  let alu = document.getElementById("alu").value;
+  let text = `Сәлем! Тапсырыс:%0A`;
+  tovar.forEach(t=>{ if(t.san>0) text += `${t.aty} - ${t.san} жұп - ${t.baga*t.san} ₸%0A`; });
+  text += `Аты: ${aty}%0AТел: ${tel}%0AАлу: ${alu}`;
+  window.open(`https://wa.me/77000000000?text=${text}`, "_blank");
+}
+korset();
+</script>
 </body>
 </html>
